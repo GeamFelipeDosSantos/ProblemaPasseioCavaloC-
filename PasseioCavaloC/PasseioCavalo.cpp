@@ -10,6 +10,7 @@ using namespace std;
     int movimentoVertical[tamanhoTabuleiro + 1] = {0,1,2,2,1,-1,-2,-2,-1};
     int tabuleiro[tamanhoTabuleiro + 1][tamanhoTabuleiro + 1];
     int tamanhoTabuleiroUsuario;
+    int static contadorAnalises = 0;
 
 
     void imprimirTabuleiro() {
@@ -30,6 +31,7 @@ using namespace std;
       bool sucesso;
       contador = 0;
       sucesso = false;
+      contadorAnalises++;
 
       do {
 
@@ -87,7 +89,8 @@ using namespace std;
       long seconds = (end.tv_sec - start.tv_sec);
       long micros = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
 
-      printf("Código executado em: %d seg %d micros\n", seconds, micros);
+      printf("Codigo executado em: %d seg %d micros\n", seconds, micros);
+      printf("Numero de casas analisadas foi: %u", contadorAnalises);
       cout << endl;
       cout << endl;
 
