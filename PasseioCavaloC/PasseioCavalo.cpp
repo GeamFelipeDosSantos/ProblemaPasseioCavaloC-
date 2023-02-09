@@ -1,5 +1,7 @@
 #include <iostream>
 #include <iomanip>
+#include <time.h>
+#include <sys/time.h>
 
 using namespace std;
 
@@ -58,6 +60,10 @@ using namespace std;
     }
 
     int main() {
+
+      struct timeval start, end;
+      gettimeofday(&start, NULL);
+
       int linha, coluna;
       bool preencheuTodasCasas;
 
@@ -73,6 +79,17 @@ using namespace std;
 
       tabuleiro[linha][coluna] = 1;
       tentarProximoMovimento(2, linha, coluna, preencheuTodasCasas);
+
+      cout << endl;
+      cout << endl;
+
+      gettimeofday(&end, NULL);
+      long seconds = (end.tv_sec - start.tv_sec);
+      long micros = ((seconds * 1000000) + end.tv_usec) - (start.tv_usec);
+
+      printf("Código executado em: %d seg %d micros\n", seconds, micros);
+      cout << endl;
+      cout << endl;
 
       if (preencheuTodasCasas)
         imprimirTabuleiro();
